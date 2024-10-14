@@ -2,14 +2,6 @@
 
 Développements en Neuro-Flou.
 
-
-=========================================
-Obtenir le dossier depuis git ONERA (nécessite d'être associé dans le projet)
-1) Ouvrir le terminal
-2) cmd : git clone http://gitlab-dtis.onera/syd/neuro-flou/neuro-flou.git
-3) git pull origin
-
-
 =========================================
 Préparer l'environnement et la configuration
 Une fois le logiciel possédé:
@@ -17,7 +9,7 @@ Commande à effectuer dans le terminal dans l'odre
 1) cd neuro-flou/code
 2) python3 -m venv mon-nom-d-env # Creation de l'env virtuel
 3) source mon-nom-d-env/bin/activate
-4) pip install --proxy=proxy:80 --upgrade pip # maj de pip (souvent dépassé à l'ONERA....) 
+4) pip install --proxy=proxy:80 --upgrade pip # maj de pip
 5) pip install --proxy=proxy:80 -r requirements.txt # isntallation des librairies
 6) La configuration est prête !
 
