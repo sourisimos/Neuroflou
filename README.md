@@ -1,52 +1,70 @@
-# Neuro-Flou
+# Setting up the Environment and Configuration
 
-Développements en Neuro-Flou.
+To get started with the software, follow these steps in the terminal in the *specified order*:
 
-=========================================
-Préparer l'environnement et la configuration
-Une fois le logiciel possédé:
-Commande à effectuer dans le terminal dans l'odre
-1) cd neuro-flou/code
-2) python3 -m venv mon-nom-d-env # Creation de l'env virtuel
-3) source mon-nom-d-env/bin/activate
-4) pip install --proxy=proxy:80 --upgrade pip # maj de pip
-5) pip install --proxy=proxy:80 -r requirements.txt # isntallation des librairies
-6) La configuration est prête !
+bash
 
+cd neuro-fuzzy/code
+python3 -m venv my-env-name   # Create a virtual environment
+source my-env-name/bin/activate
+pip install --proxy=proxy:80 --upgrade pip   # Update pip
+pip install --proxy=proxy:80 -r requirements.txt   # Install required libraries
 
-=========================================
-Effectuer un entrainement du réseau:
-1) Modifier dans le fichier INIT.py (à ouvrir depuis le gestionnaire de fichier) les paramètres que l'on souhaite
-Commande à effectuer dans le terminal dans l'ordre
-1) cd neuroflou/code
-2) python3 main.py (-args) 
-Des arguments peuvent être spécifiés pour modifier directement depuis le terminal
+The environment is now set up!
+# Training the Network
 
-Une execution se lance, un message "Started" apparait après quelques secondes, puis une chargement s'affiche. A 100% l'entrainement est terminé. 
+To initiate network training:
 
-Une fois l'entrainement terminé des sorties sont enregistrées dans code/output_temp: 
-	dossier console_log correspond aux informations numériques du réseau : paramètres, valeurs des poids après apprentissage, valeurs de la fonction cout sur les données d'apprentissage, de validation, ... 
-	dossier graph : correspond à l'évolution des fonctions couts des différents réseaux ouverts et considéré comme prometeur par rapport au nombre d'itération totale (dont les itérations utilisées pour les réseaux voisins non prometteurs)
-	dossier membership_func : correspond aux fonctions d'appartenances des differents descripteurs linguistique 
+    Modify parameters in INIT.py to set the desired configuration. Open INIT.py from the file manager.
 
-==========================================
-Ajouter un nouveau jeu de données brute: 
-1) Créer un dossier "folder_name" dans neuro-flou/datasets
-2) sauvegarder le fichier de données brut dans le dossier créé
-3) ouvrir un terminal 
-Commande à effectuer dans le terminal dans l'ordre
-4) cd neuro-flou/code
-5) source -m mon-nom-d-env/bin/activate
-6) python3 data_creator.py -h
-7) python3 data_creator.py -args /!\ spécifier les arguments obligatoires!
-8) attention il faut rajouter une entrée au dictionnaire netw_variables dans INIT.py contenant les variables du réseau manuellement et y associer la clé sous le bon format (<FOLDER_NAME>_<SAMPLE_NAME>)
+    Run the following commands in the terminal:
 
-Ajout d'une nouvelle version d'un jeu de donnée brute déjà présent
-1) python3 data_creator.py -args /!\ Toutes les colonnes de scores ne sont pas obligatoires !!! 
-2) attention il faut rajouter une entrée au dictionnaire netw_variables dans INIT.py contenant les variables du réseau manuellement et y associer la clé sous le bon format (<FOLDER_NAME>_<SAMPLE_NAME>)
+    bash
 
+    cd neuro-fuzzy/code
+    python3 main.py (-args)   # Additional arguments can be specified to override settings directly from the terminal
 
-Le pdf "Schéma d'arborescence" contient les arborescences décrivant la structure du code et les différentes relations entre les fichiers a partir des 3 fichiers principaux : main.py, NeuroFuzzyNetwork.py, TraingTree.py 
+Upon execution, a "Started" message will appear after a few seconds, followed by a loading screen. When the progress reaches 100%, training is complete.
 
+After training, output files are saved in code/output_temp:
 
+* **console_log**: Contains numerical network information such as parameters, weight values after training, and cost function values for training and validation data.
+* **graph**: Shows the evolution of cost functions for the different networks, with promising networks highlighted over the total number of iterations (including non-promising neighbor networks).
+* **membership_func**: Contains the membership functions for various linguistic descriptors.
 
+# Adding a New Raw Dataset
+
+To add a new dataset:
+
+    Create a new folder with the desired name under neuro-fuzzy/datasets.
+
+    Save the raw data file in this newly created folder.
+
+    Open a terminal and follow these commands in the specified order:
+
+    bash
+
+    cd neuro-fuzzy/code
+    source my-env-name/bin/activate
+    python3 data_creator.py -h
+    python3 data_creator.py -args   # Specify mandatory arguments here!
+
+    Note: You must manually add a new entry to the netw_variables dictionary in INIT.py for network variables, using the key format <FOLDER_NAME>_<SAMPLE_NAME>.
+
+# Adding a New Version of an Existing Dataset
+
+If updating an existing dataset:
+
+bash
+
+python3 data_creator.py -args   # Not all score columns are mandatory!
+
+    Note: As with new datasets, add a new entry to the netw_variables dictionary in INIT.py with network variables, using the key format <FOLDER_NAME>_<SAMPLE_NAME>.
+
+# Additional Resources
+
+Refer to the "Directory Structure" PDF, which outlines the code structure and the relationships between files, focusing on the three main files:
+
+    main.py
+    NeuroFuzzyNetwork.py
+    TrainingTree.py
