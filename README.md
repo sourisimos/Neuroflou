@@ -1,3 +1,5 @@
+This is an interpretable by design neural network. The project was a first work on this type of structure.
+
 # Setting up the Environment and Configuration
 
 To get started with the software, follow these steps in the terminal in the *specified order*:
